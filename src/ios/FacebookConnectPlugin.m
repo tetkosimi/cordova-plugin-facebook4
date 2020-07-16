@@ -325,22 +325,7 @@
         if(jsonError) {
             NSLog(@"There was an error parsing your 'object' JSON string");
         } else {
-            FBSDKShareOpenGraphObject *object = [FBSDKShareOpenGraphObject objectWithProperties:json];
-            if(!json[@"og:type"]) {
-                NSLog(@"No 'og:type' encountered in the object JSON. Please provide an Open Graph object type.");
-                return;
-            }
-            NSString *objectType = json[@"og:type"];
-            objectType = [objectType stringByReplacingOccurrencesOfString:@"."
-                                                               withString:@":"];
-            FBSDKShareOpenGraphAction *action = [FBSDKShareOpenGraphAction actionWithType:params[@"action"] object:object key:objectType];
-
-            FBSDKShareOpenGraphContent *content = [[FBSDKShareOpenGraphContent alloc] init];
-            content.action = action;
-            content.previewPropertyName = objectType;
-            [FBSDKShareDialog showFromViewController:self.topMostController
-                                         withContent:content
-                                            delegate:nil];
+            NSLog(@"Currently not supported.");
         }
         return;
     }
